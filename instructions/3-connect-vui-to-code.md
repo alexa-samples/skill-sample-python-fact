@@ -24,7 +24,7 @@ On [page #1](1-voice-user-interface.md) of this guide, we created a voice user i
 
 7.  **Click the "Next" button to continue to page #4 of this guide.**
 
-    [![Testing](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/3-7-next-button._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-fact/blob/master/step-by-step/4-testing.md)
+    [![Testing](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/3-7-next-button._TTH_.png)](https://github.com/alexa/skill-sample-nodejs-fact/blob/master/instructions/4-testing.md)
 
 <br/><br/>
 <a href="4-testing.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_next_testing._TTH_.png" /></a>

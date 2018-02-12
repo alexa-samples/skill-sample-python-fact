@@ -88,7 +88,7 @@ There are two parts to an Alexa skill.  The first part is the [Voice User Interf
             { "intent": "AMAZON.CancelIntent" }
         ]}
         ```
-        ([get this code on GitHub](https://github.com/alexa/skill-sample-nodejs-fact/blob/master/speechAssets/intentSchema.json))
+        ([get this code on GitHub](https://github.com/alexa/skill-sample-nodejs-fact/blob/master/models/en-US.json))
 
         We have four intents in this schema.  The first, "GetNewFactIntent" is what we will use to catch all of our user's requests for a new fact.  The remaining three are built-in intents that are provided by Amazon.  They capture, respectively, user intents for help, stopping, and cancelling what Alexa is currently doing.
 
