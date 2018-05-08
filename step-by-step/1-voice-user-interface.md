@@ -55,7 +55,7 @@ There are two parts to an Alexa skill.  The first part is the [Voice User Interf
 
 8.  Click on the "Code Editor" item under **Dashboard** on the top left side of the skill builder.
 
-9.  In the textfield provided, replace any existing code with the code provided in the [Interaction Model](../InteractionModel.json), then click "Apply Changes" or "Save Model".  
+9.  In the textfield provided, replace any existing code with the code provided in the [Interaction Model](https://github.com/alexa/skill-sample-python-fact/blob/master/speechAssets/intentSchema.json), then click "Apply Changes" or "Save Model".  
 
 10. Click on the "Dashboard" button.
 
@@ -88,7 +88,7 @@ There are two parts to an Alexa skill.  The first part is the [Voice User Interf
             { "intent": "AMAZON.CancelIntent" }
         ]}
         ```
-        ([get this code on GitHub](https://github.com/alexa/skill-sample-nodejs-fact/blob/master/speechAssets/intentSchema.json))
+        ([get this code on GitHub](https://github.com/alexa/skill-sample-python-fact/blob/master/speechAssets/intentSchema.json))
 
         We have four intents in this schema.  The first, "GetNewFactIntent" is what we will use to catch all of our user's requests for a new fact.  The remaining three are built-in intents that are provided by Amazon.  They capture, respectively, user intents for help, stopping, and cancelling what Alexa is currently doing.
 
