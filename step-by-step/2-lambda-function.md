@@ -35,7 +35,8 @@ In the [first step of this guide](1-voice-user-interface.md), we built the Voice
 7.  **Configure your function.** This screen is where we will enter the important parts of our Lambda function.  These values will only ever be visible to you, but make sure that you name your function something meaningful. "samplePythonQuiz" is sufficient if you don't have another idea for a name.
 
   ![](2-lambda-fig2.png)
-8.  **Paste the provided code into the Lambda function code box.**  We have provided the code for this skill on [GitHub](https://github.com/alexa/skill-sample-nodejs-fact/blob/master/src/index.js).  Simply delete the contents of the code box, and paste the contents of the new code.
+
+8.  **Paste the provided code into the Lambda function code box.**  We have provided the code for this skill on [GitHub](https://github.com/alexa/skill-sample-python-fact/blob/master/samplefactpython.py).  Simply delete the contents of the code box, and paste the contents of the new code.
 
 9.  **Set up your Lambda function role.**  If you haven't done this before, we have a [detailed walkthrough for setting up your first role for Lambda](LAMBDAROLE.md).  If you have done this before, you only need to set your **Existing role** value to "lambda_basic_execution."
 
