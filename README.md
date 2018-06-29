@@ -1,3 +1,8 @@
+# _NOTE: This repo does not use the beta Python SDK which can be found here:_  https://github.com/alexa-labs/alexa-skills-kit-sdk-for-python/
+### Samples based on the beta SDK can be found here: https://github.com/alexa-labs/alexa-skills-kit-sdk-for-python/tree/master/samples
+
+---
+
 # Build An Alexa Fact Skill in Python
 
 ![Tutorial Header](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/fact/header._TTH_.png)
