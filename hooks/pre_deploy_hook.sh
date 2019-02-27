@@ -27,6 +27,8 @@ echo "###########################"
 echo "##### pre-deploy hook #####"
 echo "###########################"
  
+ 
+RET=0
 if [[ $TARGET == "all" || $TARGET == "lambda" ]]; then
     grep "sourceDir" ./skill.json | cut -d: -f2 | sed 's/"//g' | sed 's/,//g' | while read -r SOURCE_DIR; do
         # Step 1: Decide source path and upload path
@@ -49,10 +51,22 @@ if [[ $TARGET == "all" || $TARGET == "lambda" ]]; then
  
         # Step 4: Find virtual environment site packages, copy contents to lambda_upload
         echo "Copying dependencies installed in $SKILL_NAME/.venv/$SKILL_ENV_NAME to $SKILL_NAME/$UPLOAD_DIR"
+        if [[ ! "$(ls -A .venv/$SKILL_ENV_NAME/bin/python)" ]]; then
+            echo "Failed to get virtual env Python runtime"
+            RET=1
+            break;
+        fi
+        
         SITE=$(.venv/$SKILL_ENV_NAME/bin/python -c 'from distutils.sysconfig import get_python_lib; print(get_python_lib())')
-        cp -r $SITE/* $UPLOAD_DIR
+        if [[ "$(ls -A $SITE/*)" ]]; then
+            cp -r $SITE/* $UPLOAD_DIR
+        else
+            echo "Failed to get the SITE package path"
+            RET=1
+            break;
+        fi
  
-        # Step 4: Update the "manifest.apis.custom.endpoint.sourceDir" value in skill.json if necessary
+        # Step 5: Update the "manifest.apis.custom.endpoint.sourceDir" value in skill.json if necessary
         if ! [[ $SOURCE_DIR == */lambda_upload ]]; then
             echo "Updating sourceDir to point to lambda_upload folder in skill.json"
             RAW_SOURCE_DIR_LINE="\"sourceDir\": \"$SOURCE_DIR\""
@@ -63,4 +77,4 @@ if [[ $TARGET == "all" || $TARGET == "lambda" ]]; then
     echo "###########################"
 fi
  
-exit 0
+exit $RET
