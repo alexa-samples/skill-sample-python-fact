@@ -26,12 +26,14 @@ create_env () {
             return 0
         else
             # No venv script present (< Py 3.3). Install using virtualenv
-            return create_using_virtualenv $PYTHON
+            create_using_virtualenv $PYTHON
+            return $?
         fi
     else
         # Python2 environment. Install using virtualenv
         PYTHON=python
-        return create_using_virtualenv $PYTHON
+        create_using_virtualenv $PYTHON
+        return $?
     fi
     return 1
 }
