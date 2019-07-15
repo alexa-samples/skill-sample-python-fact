@@ -76,6 +76,22 @@
             ],
             "name": "Space Facts",
             "description": "Ask for Space Facts, and learn about what really matters, like dark matter.\n\nSpace Facts provides fun the whole family can enjoy and is guaranteed to make you smarter.\n\nTo start, just say \"Alexa, launch Space Facts\" or \"Alexa, open Space Facts\" to get a fact\".\n\nAt anytime, you can stop by saying \"Alexa, stop\""
+          },
+          "hi-IN": {
+            "summary": "अंतरिक्ष के बारे में कुछ नया सीखें",
+            "examplePhrases": [
+              "Alexa अंतरिक्ष facts शुरू करो",
+              "Alexa अंतरिक्ष facts open करो और मुझे एक fact बताओ",
+              "Alexa अंतरिक्ष facts खोलो और मुझे एक fact दो"
+            ],
+            "keywords": [
+              "अंतरिक्ष",
+              "ज्ञान",
+              "space",
+              "trivia"
+            ],
+            "name": "अंतरिक्ष Facts",
+            "description": "अंतरिक्ष facts skill आपको अंतरिक्ष के बारे में कुछ दिलचस्प जानकारी देगा. इसे शुरू करने के लिए कहें,\"Alexa, अंतरिक्ष facts शुरू करो\". इसे रोकने के लिए, \"Alexa, चुप\""
           }
         },
         "category": "KNOWLEDGE_AND_TRIVIA"
