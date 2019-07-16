@@ -19,7 +19,7 @@ from ask_sdk_model import Response
 # TODO: The items below this comment need your attention.
 # =========================================================================================================================================
 SKILL_NAME = "अंतरिक्ष फ़ाक्ट्स"
-GET_FACT_MESSAGE = "ये लीजिए आपका fact:"
+GET_FACT_MESSAGE = "ये लीजिए आपका fact: "
 HELP_MESSAGE = "आप मुझे नया fact सुनाओ बोल सकते हैं या फिर exit भी बोल सकते हैं... आप क्या करना चाहेंगे?"
 HELP_REPROMPT = "मैं आपकी किस प्रकार से सहायता कर सकती हूँ?"
 STOP_MESSAGE = "अच्छा bye, फिर मिलते हैं"
