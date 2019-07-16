@@ -9,7 +9,7 @@ In the [first step of this guide](1-voice-user-interface.md), we built the Voice
 
 > Note: if you don't want to step through the detailed setup steps, click [here](https://console.aws.amazon.com/lambda/home?region=us-east-1#/create/app?applicationId=arn:aws:serverlessrepo:us-east-1:173334852312:applications/alexa-skills-kit-python36-factskill) to create the function from a Serverless Application Repository template.  Then skip to the final step below and copy the ARN.
 
-1.  **Go to http://aws.amazon.com and sign in to the console.** If you don't already have an account, you will need to create one.  [Check out this quick walkthrough for setting up a new AWS account](https://github.com/alexa/alexa-cookbook/blob/master/aws/set-up-aws.md).
+1.  **Go to http://aws.amazon.com and sign in to the console.** If you don't already have an account, you will need to create one.  [Check out this quick walkthrough for setting up a new AWS account](https://alexa.design/create-aws-account).
 
     [![Sign In](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/2-1-sign-in-to-the-console._TTH_.png)](https://console.aws.amazon.com/console/home)
 
@@ -34,7 +34,7 @@ In the [first step of this guide](1-voice-user-interface.md), we built the Voice
         Python 2.7.10
         ```
 
-    3. **Set up your Lambda function role.**  If you haven't done this before, we have a [detailed walkthrough for setting up your first role for Lambda](https://github.com/alexa/alexa-cookbook/blob/master/guides/aws-security-and-setup/lambda-role.md).  If you have done this before, you only need to select the **Existing role**.
+    3. **Set up your Lambda function role.**  If you haven't done this before, we have a [detailed walkthrough for setting up your first role for Lambda](https://alexa.design/create-lambda-role).  If you have done this before, you only need to select the **Existing role**.
 
     4. Click **Create function**.
 
@@ -48,7 +48,7 @@ In the [first step of this guide](1-voice-user-interface.md), we built the Voice
     
     1. This skill uses the [ASK SDK for Python](https://github.com/alexa/alexa-skills-kit-sdk-for-python) for development. The skill code is provided in the [lambda_function.py](../lambda/py/lambda_function.py), and the dependencies are mentioned in [requirements.txt](../lambda/py/requirements.txt). Download the contents of the [lambda/py](../lambda/py) folder. 
     
-    Note: If you are building a skill for the Hindi(IN) locale, make sure to copy the code from [lambda_function.hi-in.py](../lambda/py/lambda_function.hi-in.py) to [lambda_function.py](../lambda/py/lambda_function.py) before proceeding ahead.
+    > Note: If you are building a skill for the Hindi(IN) locale, make sure to copy the code from [lambda_function.hi-in.py](../lambda/py/lambda_function.hi-in.py) to [lambda_function.py](../lambda/py/lambda_function.py) before proceeding ahead.
     
     2. On your system, navigate to the lambda folder and install the dependencies in a new folder called “skill_env” using the following command:
     
