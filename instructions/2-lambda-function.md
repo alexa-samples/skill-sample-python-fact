@@ -47,6 +47,9 @@ In the [first step of this guide](1-voice-user-interface.md), we built the Voice
     We have provided the code for this skill on [here](../lambda/py). To properly upload this code to Lambda, you'll need to perform the following:
     
     1. This skill uses the [ASK SDK for Python](https://github.com/alexa/alexa-skills-kit-sdk-for-python) for development. The skill code is provided in the [lambda_function.py](../lambda/py/lambda_function.py), and the dependencies are mentioned in [requirements.txt](../lambda/py/requirements.txt). Download the contents of the [lambda/py](../lambda/py) folder. 
+    
+    Note: If you are building a skill for the Hindi(IN) locale, make sure to copy the code from [lambda_function.hi-in.py](../lambda/py/lambda_function.hi-in.py) to [lambda_function.py](../lambda/py/lambda_function.py) before proceeding ahead.
+    
     2. On your system, navigate to the lambda folder and install the dependencies in a new folder called “skill_env” using the following command:
     
         ```
