@@ -11,7 +11,7 @@ So far, we have [created a Voice User Interface](./1-voice-user-interface.md) an
 
 2. Open the **Test** Pane, by selecting the **Test** link from the top navigation menu.
 
-3. Enable Testing by activating the **Test is enabled for this skill** slider. It should be underneath the top navigation menu.
+3. Enable Testing by choosing "Development" in the drop down, which should change the status to **Test is enabled for this skill**. It should be underneath the top navigation menu.
 
 4. To validate that your skill is working as expected, invoke your skill from the **Alexa Simulator**. You can either type or click and hold the mic from the input box to use your voice.
 	1. **Type** "Open" followed by the invocation name you gave your skill in [Step 1](./1-voice-user-interface.md). For example, "Open Space facts".
