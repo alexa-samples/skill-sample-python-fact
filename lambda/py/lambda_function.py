@@ -3,6 +3,8 @@
 
 import random
 import logging
+import json
+import prompts
 
 from ask_sdk_core.skill_builder import SkillBuilder
 from ask_sdk_core.dispatch_components import (
@@ -14,43 +16,6 @@ from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_model.ui import SimpleCard
 from ask_sdk_model import Response
 
-
-# =========================================================================================================================================
-# TODO: The items below this comment need your attention.
-# =========================================================================================================================================
-SKILL_NAME = "Space Facts"
-GET_FACT_MESSAGE = "Here's your fact: "
-HELP_MESSAGE = "You can say tell me a space fact, or, you can say exit... What can I help you with?"
-HELP_REPROMPT = "What can I help you with?"
-STOP_MESSAGE = "Goodbye!"
-FALLBACK_MESSAGE = "The Space Facts skill can't help you with that.  It can help you discover facts about space if you say tell me a space fact. What can I help you with?"
-FALLBACK_REPROMPT = 'What can I help you with?'
-EXCEPTION_MESSAGE = "Sorry. I cannot help you with that."
-
-# =========================================================================================================================================
-# TODO: Replace this data with your own.  You can find translations of this data at http://github.com/alexa/skill-sample-python-fact/lambda/data
-# =========================================================================================================================================
-
-data = [
-  'A year on Mercury is just 88 days long.',
-  'Despite being farther from the Sun, Venus experiences higher temperatures than Mercury.',
-  'Venus rotates counter-clockwise, possibly because of a collision in the past with an asteroid.',
-  'On Mars, the Sun appears about half the size as it does on Earth.',
-  'Earth is the only planet not named after a god.',
-  'Jupiter has the shortest day of all the planets.',
-  'The Milky Way galaxy will collide with the Andromeda Galaxy in about 5 billion years.',
-  'The Sun contains 99.86% of the mass in the Solar System.',
-  'The Sun is an almost perfect sphere.',
-  'A total solar eclipse can happen once every 1 to 2 years. This makes them a rare event.',
-  'Saturn radiates two and a half times more energy into space than it receives from the sun.',
-  'The temperature inside the Sun can reach 15 million degrees Celsius.',
-  'The Moon is moving approximately 3.8 cm away from our planet every year.',
-]
-
-# =========================================================================================================================================
-# Editing anything below this line might break your skill.
-# =========================================================================================================================================
-
 sb = SkillBuilder()
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -59,6 +24,7 @@ logger.setLevel(logging.DEBUG)
 # Built-in Intent Handlers
 class GetNewFactHandler(AbstractRequestHandler):
     """Handler for Skill Launch and GetNewFact Intent."""
+
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
         return (is_request_type("LaunchRequest")(handler_input) or
@@ -68,16 +34,20 @@ class GetNewFactHandler(AbstractRequestHandler):
         # type: (HandlerInput) -> Response
         logger.info("In GetNewFactHandler")
 
-        random_fact = random.choice(data)
-        speech = GET_FACT_MESSAGE + random_fact
+        # get localization data
+        data = handler_input.attributes_manager.request_attributes["_"]
+
+        random_fact = random.choice(data[prompts.FACTS])
+        speech = data[prompts.GET_FACT_MESSAGE].format(random_fact)
 
         handler_input.response_builder.speak(speech).set_card(
-            SimpleCard(SKILL_NAME, random_fact))
+            SimpleCard(data[prompts.SKILL_NAME], random_fact))
         return handler_input.response_builder.response
 
 
 class HelpIntentHandler(AbstractRequestHandler):
     """Handler for Help Intent."""
+
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
         return is_intent_name("AMAZON.HelpIntent")(handler_input)
@@ -86,14 +56,20 @@ class HelpIntentHandler(AbstractRequestHandler):
         # type: (HandlerInput) -> Response
         logger.info("In HelpIntentHandler")
 
-        handler_input.response_builder.speak(HELP_MESSAGE).ask(
-            HELP_REPROMPT).set_card(SimpleCard(
-                SKILL_NAME, HELP_MESSAGE))
+        # get localization data
+        data = handler_input.attributes_manager.request_attributes["_"]
+
+        speech = data[prompts.HELP_MESSAGE]
+        reprompt = data[prompts.HELP_REPROMPT]
+        handler_input.response_builder.speak(speech).ask(
+            reprompt).set_card(SimpleCard(
+                data[prompts.SKILL_NAME], speech))
         return handler_input.response_builder.response
 
 
 class CancelOrStopIntentHandler(AbstractRequestHandler):
     """Single handler for Cancel and Stop Intent."""
+
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
         return (is_intent_name("AMAZON.CancelIntent")(handler_input) or
@@ -103,7 +79,11 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
         # type: (HandlerInput) -> Response
         logger.info("In CancelOrStopIntentHandler")
 
-        handler_input.response_builder.speak(STOP_MESSAGE)
+        # get localization data
+        data = handler_input.attributes_manager.request_attributes["_"]
+
+        speech = data[prompts.STOP_MESSAGE]
+        handler_input.response_builder.speak(speech)
         return handler_input.response_builder.response
 
 
@@ -114,6 +94,7 @@ class FallbackIntentHandler(AbstractRequestHandler):
     This handler will not be triggered except in that locale,
     so it is safe to deploy on any locale.
     """
+
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
         return is_intent_name("AMAZON.FallbackIntent")(handler_input)
@@ -122,13 +103,41 @@ class FallbackIntentHandler(AbstractRequestHandler):
         # type: (HandlerInput) -> Response
         logger.info("In FallbackIntentHandler")
 
-        handler_input.response_builder.speak(FALLBACK_MESSAGE).ask(
-            FALLBACK_REPROMPT)
+        # get localization data
+        data = handler_input.attributes_manager.request_attributes["_"]
+
+        speech = data[prompts.FALLBACK_MESSAGE]
+        reprompt = data[prompts.FALLBACK_REPROMPT]
+        handler_input.response_builder.speak(speech).ask(
+            reprompt)
         return handler_input.response_builder.response
+
+
+class LocalizationInterceptor(AbstractRequestInterceptor):
+    """
+    Add function to request attributes, that can load locale specific data.
+    """
+
+    def process(self, handler_input):
+        locale = handler_input.request_envelope.request.locale
+        logger.info("Locale is {}".format(locale[:2]))
+
+        # localized strings stored in language_strings.json
+        with open("language_strings.json") as language_prompts:
+            language_data = json.load(language_prompts)
+        # set default translation data to broader translation
+        data = language_data[locale[:2]]
+        # if a more specialized translation exists, then select it instead
+        # example: "fr-CA" will pick "fr" translations first, but if "fr-CA" translation exists,
+        #          then pick that instead
+        if locale in language_data:
+            data.update(language_data[locale])
+        handler_input.attributes_manager.request_attributes["_"] = data
 
 
 class SessionEndedRequestHandler(AbstractRequestHandler):
     """Handler for Session End."""
+
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
         return is_request_type("SessionEndedRequest")(handler_input)
@@ -147,6 +156,7 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
     """Catch all exception handler, log exception and
     respond with custom message.
     """
+
     def can_handle(self, handler_input, exception):
         # type: (HandlerInput, Exception) -> bool
         return True
@@ -165,6 +175,7 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
 # Request and Response loggers
 class RequestLogger(AbstractRequestInterceptor):
     """Log the alexa requests."""
+
     def process(self, handler_input):
         # type: (HandlerInput) -> None
         logger.debug("Alexa Request: {}".format(
@@ -173,6 +184,7 @@ class RequestLogger(AbstractRequestInterceptor):
 
 class ResponseLogger(AbstractResponseInterceptor):
     """Log the alexa responses."""
+
     def process(self, handler_input, response):
         # type: (HandlerInput, Response) -> None
         logger.debug("Alexa Response: {}".format(response))
@@ -188,9 +200,10 @@ sb.add_request_handler(SessionEndedRequestHandler())
 # Register exception handlers
 sb.add_exception_handler(CatchAllExceptionHandler())
 
-# TODO: Uncomment the following lines of code for request, response logs.
-# sb.add_global_request_interceptor(RequestLogger())
-# sb.add_global_response_interceptor(ResponseLogger())
+# Register request and response interceptors
+sb.add_global_request_interceptor(LocalizationInterceptor())
+sb.add_global_request_interceptor(RequestLogger())
+sb.add_global_response_interceptor(ResponseLogger())
 
 # Handler name that is used on AWS lambda
 lambda_handler = sb.lambda_handler()
