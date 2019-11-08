@@ -115,7 +115,7 @@
 	"it-IT": {
 		"SKILL_NAME": "Aneddoti dallo spazio"
 	},
-	"jp": {
+	"ja": {
 		"SKILL_NAME": "日本語版豆知識",
 		"GET_FACT_MESSAGE": "知ってましたか？ {}",
 		"HELP_MESSAGE": "豆知識を聞きたい時は「豆知識」と、終わりたい時は「おしまい」と言ってください。どうしますか？",
