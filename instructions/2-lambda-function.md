@@ -63,6 +63,11 @@ In the [first step of this guide](1-voice-user-interface.md), we built the Voice
         ```
     
     4. Zip the contents of the `skill_env` folder. Remember to zip the **contents** of the folder and **NOT** the folder itself.
+    
+        ```
+        cd skill_env; zip -r samplePythonFacts.zip .
+        ```
+        
     5. On the AWS Lambda console, change the **code entry type** drop-down to **Upload a .ZIP file**, upload the zip created in the previous step and click on **Save**.
     
     *(Optional)* Follow the ASK Python SDK [Getting Started](https://alexa-skills-kit-python-sdk.readthedocs.io/en/latest/GETTING_STARTED.html#adding-the-ask-sdk-for-python-to-your-project) documentation, to check alternative ways of installing the sdk and deploying to AWS Lambda console.
