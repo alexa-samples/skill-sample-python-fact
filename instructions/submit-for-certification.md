@@ -1,7 +1,10 @@
 # Build An Alexa Fact Skill
 <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/header._TTH_.png" />
 
+<<<<<<< HEAD:instructions/submit-for-certification.md
 Build an engaging facts skill about any topic. Alexa will select a fact at random and share it with the user when the skill is invoked.
+=======
+>>>>>>> 5506879c619b3504fdae124603a675e36dc2c059:instructions/submit-for-certification.md
 
 ## Get Your Skill Certified and Published
 
