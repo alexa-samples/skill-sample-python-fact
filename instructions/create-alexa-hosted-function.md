@@ -18,4 +18,3 @@ At the bottom left corner of the page, notice the link to **Logs: Amazon CloudWa
 
 
 [![Next](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_next_testing._TTH_.png)](./test-using-simulator.md)
-
