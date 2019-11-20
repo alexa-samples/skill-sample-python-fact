@@ -9,9 +9,11 @@ At this point, you should have a working copy of our Fact skill.  In order to ma
 
 1.  **New data.** You will need to provide a set of facts for your topic.  We recommend a minimum of 25, but a total closer to 100 offers a better experience.
 
-    1.  Open your code file in the online editor: `language_strings.json`
+    1. Navigate to the **Code** tab again, and expand the project folder on the left to `Skill Code/lambda`.
 
-    2.  Search for your locale's `FACTS` array. You can see that it is a simple list of facts. For example, below is the `FACTS` array for the `en` locale.
+    2. Open **[language_strings.json](../lambda/py/language_strings.json)**
+
+    3. In this example, we are going to be adding an additional fact for the `en` locale. To do this, let's focus on lines `2-18` in the file, most importantly the `FACTS` array property. This is the entire set of facts our skill pulls from at random when a user asks for a fact (for `en-US` locales). For example, below is the `FACTS` array for the `en` locale.
         ```js
         "en": {
             ...,
@@ -37,21 +39,21 @@ At this point, you should have a working copy of our Fact skill.  In order to ma
                 "On Mars, the Sun appears about half the size as it does on Earth.",
                 "Jupiter has the shortest day of all the planets.",
                 "The Sun is an almost perfect sphere.",
-                "A single day on Venus is about 117 days."
+                "A single day on Venus is about 117 days."  <-- NEW ITEM
 		    ],
             ...
         } 
         ```
 
-    3.  Update the facts with new facts, or quotes, jokes, etc.
+    After you're done editing all of the files necessary, make sure to press **Save**, **Deploy**, and navigate back to the **Testing** tab. Keep asking for a new fact, and Alexa should respond with a random fact from the new set.
 
 2.  **New sentences to respond to your users.** There are several sentences and responses that you will want to customize for your skill.
 
-    1.  Go back to **[language_strings.json](../lambda/py/language_strings.json).**
+    1.  Navigate to the **Code** tab again, and expand the project folder on the left to `Skill Code/lambda`.
 
-    2.  **Look for the a specific locale such as `en`** This is the beginning of the section where you need to customize several text strings for your skill.
+    2.  Go back to **[language_strings.json](../lambda/py/language_strings.json).**
 
-    3.  For each prompt, such as `GET_FACT_MESSAGE`, replace the string contents with any sentence you would like Alexa to respond with instead. For example, the following changes will result in Alexa saying "Your fact is", instead of "Here's your fact", when the `GetNewFactHandler` is triggered.
+    3.  Just as before, we are going to be editing a response message for the `en` locale. This means we will be focusing on lines `2-18`. For example, I am going to be replacing the response message when a user asks for a fact from "Here's your fact" to "Your fact is: ". To do this, let's focus on `GET_FACT_MESSAGE`, and replace the contents with any "Your fact is: " instead.
         
         Before:
         ```js
@@ -66,13 +68,13 @@ At this point, you should have a working copy of our Fact skill.  In order to ma
         ```js
         "en": {
             ...,
-            'GET_FACT_MESSAGE': "Your fact is: {}",
+            'GET_FACT_MESSAGE': "Your fact is: {}", <-- CHANGED
             ...,
             ...
         }
         ```
 
-        
+     After you're done editing all of the files necessary, as before, make sure to press **Save**, **Deploy**, and navigate back to the **Testing** tab. When you ask for a new fact, Alexa will say "Your fact is: \<fact\>" instead of "Here's your fact: \<fact\>".
 
 
 3.  **New language.** If you are creating this skill for another language other than English, you will need to make sure Alexa's responses are also in that language.
