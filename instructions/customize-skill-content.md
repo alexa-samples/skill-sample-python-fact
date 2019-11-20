@@ -13,7 +13,7 @@ At this point, you should have a working copy of our Fact skill.  In order to ma
 
     2. Open **[language_strings.json](../lambda/py/language_strings.json)**
 
-    3. In this example, we are going to be adding an additional fact for the `en` locale. To do this, let's focus on lines `2-18` in the file, most importantly the `FACTS` array property. This is the entire set of facts our skill pulls from at random when a user asks for a fact (for `en-US` locales). For example, below is the `FACTS` array for the `en` locale.
+    3. In this example, we are going to be adding an additional fact for the `en` locale. To do this, let's focus on lines `2-18` in the file, most importantly the `FACTS` array property. This is the entire set of facts our skill pulls from at random when a user asks for a fact (for `en` locales). Here is the default Facts for the `en` locale:
         ```js
         "en": {
             ...,
