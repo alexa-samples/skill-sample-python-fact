@@ -7,13 +7,13 @@
       },
       "code": {
         "default": {
-          "src": "lambda/py/lambda_upload"
+          "src": ".lambda/py"
         }
       },
       "skillInfrastructure": {
         "userConfig": {
-          "runtime": "nodejs10.x",
-          "handler": "index.handler",
+          "runtime": "python3.7",
+          "handler": "lambda_function.lambda_handler",
           "awsRegion": "us-east-1"
         },
         "type": "@ask-cli/lambda-deployer"
