@@ -166,7 +166,7 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
         logger.info("In CatchAllExceptionHandler")
         logger.error(exception, exc_info=True)
 
-        handler_input.response_builder.speak(EXCEPTION_MESSAGE).ask(
+        handler_input.response_builder.speak(ERROR_MESSAGE).ask(
             HELP_REPROMPT)
 
         return handler_input.response_builder.response
