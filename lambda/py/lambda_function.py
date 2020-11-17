@@ -165,9 +165,13 @@ class CatchAllExceptionHandler(AbstractExceptionHandler):
         # type: (HandlerInput, Exception) -> Response
         logger.info("In CatchAllExceptionHandler")
         logger.error(exception, exc_info=True)
-
-        handler_input.response_builder.speak(prompts.ERROR_MESSAGE).ask(
-            prompts.HELP_REPROMPT)
+        # get localization data
+        data = handler_input.attributes_manager.request_attributes["_"]
+        prompt = data[prompts.ERROR_MESSAGE]
+        reprompt = data[prompts.HELP_REPROMPT]
+        
+        handler_input.response_builder.speak(prompt).ask(
+            reprompt)
 
         return handler_input.response_builder.response
 
