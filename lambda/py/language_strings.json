@@ -115,7 +115,7 @@
 	"it-IT": {
 		"SKILL_NAME": "Aneddoti dallo spazio"
 	},
-	"jp": {
+	"ja": {
 		"SKILL_NAME": "日本語版豆知識",
 		"GET_FACT_MESSAGE": "知ってましたか？ {}",
 		"HELP_MESSAGE": "豆知識を聞きたい時は「豆知識」と、終わりたい時は「おしまい」と言ってください。どうしますか？",
@@ -131,7 +131,7 @@
 			"天の川銀河は約50億年後にアンドロメダ星雲と衝突します。"
 		]
 	},
-	"jp-JP": {
+	"ja-JP": {
 		"SKILL_NAME": "日本語版豆知識"
 	},
 	"pt": {
@@ -153,5 +153,22 @@
 	},
 	"pt-BR": {
 		"SKILL_NAME": "Fatos Espaciais"
+	},
+	"de-DE": {
+		"SKILL_NAME": "Weltraumwissen",
+		"GET_FACT_MESSAGE": "Hier sind deine Fakten: {}",
+		"HELP_MESSAGE": "Du kannst sagen, „Nenne mir einen Fakt über den Weltraum“, oder du kannst „Beenden“ sagen... Wie kann ich dir helfen?",
+		"HELP_REPROMPT": "Wie kann ich dir helfen?",
+		"FALLBACK_MESSAGE": "Die Weltraumfakten Skill kann dir dabei nicht helfen. Sie kann dir Fakten über den Raum erzählen, wenn du dannach fragst.",
+		"FALLBACK_REPROMPT": "Wie kann ich dir helfen?",
+		"ERROR_MESSAGE": "Es ist ein Fehler aufgetreten.",
+		"STOP_MESSAGE": "Auf Wiedersehen!",
+		"FACTS": [
+			"Ein Jahr dauert auf dem Merkur nur 88 Tage.",
+			"Die Venus ist zwar weiter von der Sonne entfernt, hat aber höhere Temperaturen als Merkur.",
+			"Venus dreht sich entgegen dem Uhrzeigersinn, möglicherweise aufgrund eines früheren Zusammenstoßes mit einem Asteroiden.",
+			"Auf dem Mars erscheint die Sonne nur halb so groß wie auf der Erde.",
+			"Jupiter hat den kürzesten Tag aller Planeten."
+		]
 	}
 }
